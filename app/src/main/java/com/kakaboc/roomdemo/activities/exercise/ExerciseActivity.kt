@@ -1,11 +1,11 @@
 package com.kakaboc.roomdemo.activities.exercise
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
 import com.kakaboc.roomdemo.R
-import kotlinx.android.synthetic.main.activity_training.*
+import kotlinx.android.synthetic.main.activity_exercise.*
 
 class ExerciseActivity : AppCompatActivity(), ExerciseView {
     private val presenter = ExercisePresenter(this, this)
@@ -13,17 +13,33 @@ class ExerciseActivity : AppCompatActivity(), ExerciseView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
+        setUpButtonsListeners()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.onIntentDataReceived(intent?.extras)
+    }
+
+    private fun setUpButtonsListeners() {
+        exerciseDeleteButton.setOnClickListener {
+            presenter.onExerciseDeleteRequested()
+        }
+        exerciseSaveButton.setOnClickListener {
+            presenter.onAddExerciseRequested(exerciseNameEdit.text.toString())
+        }
     }
 
     override fun showInsertToast() {
-        Toast.makeText(this, R.string.successful_training_add, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, R.string.successful_exercise_add, Toast.LENGTH_SHORT).show()
     }
+
     override fun enableDeleteButton() {
-        deleteButton.visibility = View.VISIBLE
+        exerciseDeleteButton.visibility = View.VISIBLE
     }
 
     override fun disableDeleteButton() {
-        deleteButton.visibility = View.GONE
+        exerciseDeleteButton.visibility = View.GONE
     }
 
     override fun showUpdateToast() {
@@ -31,6 +47,6 @@ class ExerciseActivity : AppCompatActivity(), ExerciseView {
     }
 
     override fun setExerciseName(name: String) {
-
+        exerciseNameEdit.setText(name)
     }
 }

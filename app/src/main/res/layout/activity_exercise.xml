@@ -15,6 +15,8 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:inputType="text"
+        android:hint="@string/hint_exercise"
         app:layout_constraintTop_toBottomOf="@+id/exerciseLabel" />
 
     <TextView
@@ -29,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/saveButton"
+        android:id="@+id/exerciseSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -42,7 +44,7 @@
         tools:text="save" />
 
     <Button
-        android:id="@+id/deleteButton"
+        android:id="@+id/exerciseDeleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -52,6 +54,6 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveButton" />
+        app:layout_constraintTop_toBottomOf="@+id/exerciseSaveButton" />
 
 </android.support.constraint.ConstraintLayout>

@@ -6,4 +6,8 @@
     <string name="save">Save</string>
     <string name="delete">Delete</string>
     <string name="successful_training_update">Update successful!</string>
+    <string name="successful_exercise_add">Added new exercise!</string>
+    <string name="trainings">Trainings</string>
+    <string name="exercises">Exercises</string>
+    <string name="hint_exercise">type exercise name</string>
 </resources>

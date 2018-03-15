@@ -9,9 +9,8 @@ import com.kakaboc.roomdemo.activities.exercise.ExerciseActivity
 import com.kakaboc.roomdemo.activities.main.TRAINING_ID
 import com.kakaboc.roomdemo.database.model.Exercise
 import kotlinx.android.synthetic.main.activity_exercises_catalog.*
-import kotlinx.android.synthetic.main.activity_main.*
 
-const val EXERCISE_ID = "com.kakaboc.trainID"
+const val EXERCISE_ID = "com.kakaboc.exerciseID"
 
 class ExerciseCatalogActivity : AppCompatActivity(), ExerciseCatalogView {
 
