@@ -1,13 +1,13 @@
 package com.kakaboc.roomdemo.database
 
 import android.arch.persistence.room.Database
+import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
+import android.content.Context
 import com.kakaboc.roomdemo.database.model.DaoExercise
 import com.kakaboc.roomdemo.database.model.DaoTraining
 import com.kakaboc.roomdemo.database.model.Exercise
 import com.kakaboc.roomdemo.database.model.Training
-import android.arch.persistence.room.Room
-import android.content.Context
 
 
 /**
@@ -37,5 +37,4 @@ class DatabaseInstance {
             return instance as AppDatabase
         }
     }
-
 }
