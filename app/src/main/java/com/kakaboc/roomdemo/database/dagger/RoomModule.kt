@@ -1,4 +1,4 @@
-package com.kakaboc.roomdemo.dagger.modules
+package com.kakaboc.roomdemo.database.dagger
 
 import android.app.Application
 import android.arch.persistence.room.Room

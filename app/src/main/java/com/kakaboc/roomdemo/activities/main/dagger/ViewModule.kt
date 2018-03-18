@@ -1,11 +1,11 @@
-package com.kakaboc.roomdemo.dagger.modules
+package com.kakaboc.roomdemo.activities.main.dagger
 
 import com.kakaboc.roomdemo.activities.main.MainView
 import dagger.Module
 import dagger.Provides
 
 @Module
-class ViewModule(
+class MainViewModule(
         private val view: MainView
 ) {
 

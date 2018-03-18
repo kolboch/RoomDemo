@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.kakaboc.roomdemo.R
+import com.kakaboc.roomdemo.activities.dagger.AppModule
 import com.kakaboc.roomdemo.activities.exercise_catalog.ExerciseCatalogActivity
+import com.kakaboc.roomdemo.activities.main.dagger.DaggerMainComponent
+import com.kakaboc.roomdemo.activities.main.dagger.MainViewModule
 import com.kakaboc.roomdemo.activities.training.TrainingActivity
-import com.kakaboc.roomdemo.dagger.components.DaggerAppComponent
-import com.kakaboc.roomdemo.dagger.modules.AppModule
-import com.kakaboc.roomdemo.dagger.modules.RoomModule
-import com.kakaboc.roomdemo.dagger.modules.ViewModule
+import com.kakaboc.roomdemo.database.dagger.RoomModule
 import com.kakaboc.roomdemo.database.model.Training
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
     @Inject
     lateinit var presenter: MainPresenter
+
     private val adapter = TrainingsAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,10 +29,10 @@ class MainActivity : AppCompatActivity(), MainView {
         setContentView(R.layout.activity_main)
         setUpTrainingsRecycler()
         setUpButtonListeners()
-        DaggerAppComponent.builder()
+        DaggerMainComponent.builder()
                 .appModule(AppModule(application))
                 .roomModule(RoomModule(application))
-                .viewModule(ViewModule(this))
+                .mainViewModule(MainViewModule(this))
                 .build()
                 .inject(this)
     }
