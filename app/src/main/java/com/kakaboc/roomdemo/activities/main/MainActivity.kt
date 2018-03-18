@@ -7,13 +7,17 @@ import android.support.v7.widget.LinearLayoutManager
 import com.kakaboc.roomdemo.R
 import com.kakaboc.roomdemo.activities.exercise_catalog.ExerciseCatalogActivity
 import com.kakaboc.roomdemo.activities.training.TrainingActivity
+import com.kakaboc.roomdemo.dagger.components.DaggerAppComponent
+import com.kakaboc.roomdemo.dagger.modules.AppModule
+import com.kakaboc.roomdemo.dagger.modules.RoomModule
 import com.kakaboc.roomdemo.database.model.Training
 import kotlinx.android.synthetic.main.activity_main.*
 
 const val TRAINING_ID = "com.kakaboc.trainID"
 
 class MainActivity : AppCompatActivity(), MainView {
-    private val presenter = MainPresenter(this, this)
+
+    private val presenter = MainPresenter(this)
     private val adapter = TrainingsAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +25,11 @@ class MainActivity : AppCompatActivity(), MainView {
         setContentView(R.layout.activity_main)
         setUpTrainingsRecycler()
         setUpButtonListeners()
+        DaggerAppComponent.builder()
+                .appModule(AppModule(application))
+                .roomModule(RoomModule(application))
+                .build()
+                .inject(presenter)
     }
 
     override fun onResume() {

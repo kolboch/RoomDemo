@@ -5,7 +5,6 @@ import com.kakaboc.roomdemo.activities.main.MainPresenter
 import com.kakaboc.roomdemo.dagger.modules.AppModule
 import com.kakaboc.roomdemo.dagger.modules.RoomModule
 import com.kakaboc.roomdemo.database.AppDatabase
-import com.kakaboc.roomdemo.database.data.TrainingRepository
 import com.kakaboc.roomdemo.database.model.DaoTraining
 import dagger.Component
 import javax.inject.Singleton
@@ -20,9 +19,6 @@ interface AppComponent {
 
     fun appDatabase(): AppDatabase
 
-    fun trainingRepository(): TrainingRepository
-
     fun application(): Application
-
 
 }

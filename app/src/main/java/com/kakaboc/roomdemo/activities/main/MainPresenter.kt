@@ -1,20 +1,17 @@
 package com.kakaboc.roomdemo.activities.main
 
-import android.arch.persistence.room.Room
-import android.content.Context
-import com.kakaboc.roomdemo.database.AppDatabase
-import com.kakaboc.roomdemo.database.DatabaseInstance
+import com.kakaboc.roomdemo.database.model.DaoTraining
+import javax.inject.Inject
 
 /**
  * Created by Karlo on 2018-03-15.
  */
 class MainPresenter(
-        context: Context,
         private val view: MainView
 ) {
 
-    private val database = DatabaseInstance.getAppDatabase(context)
-    private val trainingsDao = database.getTrainingDao()
+    @Inject
+    lateinit var trainingsDao: DaoTraining
 
     fun onTrainingsListRequested() {
         val trainings = trainingsDao.getAllTrainings()
