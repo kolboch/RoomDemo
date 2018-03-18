@@ -6,13 +6,12 @@ import javax.inject.Inject
 /**
  * Created by Karlo on 2018-03-15.
  */
-class MainPresenter(
-        private val view: MainView
+class MainPresenter
+@Inject
+constructor(
+        private val view: MainView,
+        private val trainingsDao: DaoTraining
 ) {
-
-    @Inject
-    lateinit var trainingsDao: DaoTraining
-
     fun onTrainingsListRequested() {
         val trainings = trainingsDao.getAllTrainings()
         view.displayTrainings(trainings)

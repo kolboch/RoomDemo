@@ -10,14 +10,17 @@ import com.kakaboc.roomdemo.activities.training.TrainingActivity
 import com.kakaboc.roomdemo.dagger.components.DaggerAppComponent
 import com.kakaboc.roomdemo.dagger.modules.AppModule
 import com.kakaboc.roomdemo.dagger.modules.RoomModule
+import com.kakaboc.roomdemo.dagger.modules.ViewModule
 import com.kakaboc.roomdemo.database.model.Training
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 const val TRAINING_ID = "com.kakaboc.trainID"
 
 class MainActivity : AppCompatActivity(), MainView {
 
-    private val presenter = MainPresenter(this)
+    @Inject
+    lateinit var presenter: MainPresenter
     private val adapter = TrainingsAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +31,9 @@ class MainActivity : AppCompatActivity(), MainView {
         DaggerAppComponent.builder()
                 .appModule(AppModule(application))
                 .roomModule(RoomModule(application))
+                .viewModule(ViewModule(this))
                 .build()
-                .inject(presenter)
+                .inject(this)
     }
 
     override fun onResume() {
